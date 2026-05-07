@@ -12,4 +12,10 @@ class ChanceTest {
         assertTrue(chanceOfGettingTails.equals(Probability.of(0.25)));
     }
 
+    @Test
+    void shouldBeAbleToRepresentChanceNotGettingOfTails() {
+        Probability chanceOfNotGettingTails = Probability.not(0.25);
+        assertTrue(chanceOfNotGettingTails.equals(Probability.of(0.75)));
+    }
+
 }

@@ -14,6 +14,10 @@ public class Probability {
         return new Probability(value);
     }
 
+    public static Probability not(double value) {
+        return new Probability(1 - value);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Probability that)) return false;
