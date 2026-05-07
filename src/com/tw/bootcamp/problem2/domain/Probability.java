@@ -28,4 +28,8 @@ public class Probability {
     public int hashCode() {
         return Objects.hashCode(value);
     }
+
+    public Probability and(Probability otherChance) {
+        return new Probability(this.value * otherChance.value);
+    }
 }
