@@ -9,12 +9,22 @@ import static org.mockito.Mockito.*;
 class CoinTest {
     @Test
 
-    void shouldReturnProbability() {
+    void shouldReturnProbabilityOfGettingTails() {
         Coin coinSpy =  spy(new Coin());
 
-        when(coinSpy.flip()).thenReturn("Tails");
+        when(coinSpy.flip()).thenReturn(CoinFace.TAILS);
 
-        double tailsCount = coinSpy.chanceOfTails(10);
-        assertEquals(10, tailsCount);
+        double chances = coinSpy.chanceOfTails(10);
+        assertEquals(100, chances);
+    }
+
+    @Test
+    void shouldReturnProbabilityOfNotGettingTails() {
+        Coin coinSpy =  spy(new Coin());
+
+        when(coinSpy.flip()).thenReturn(CoinFace.TAILS);
+
+        double chances = coinSpy.chanceOfNotGettingTails(10);
+        assertEquals(0, chances);
     }
 }

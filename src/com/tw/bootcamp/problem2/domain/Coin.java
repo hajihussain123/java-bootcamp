@@ -1,21 +1,23 @@
 package com.tw.bootcamp.problem2.domain;
 
 public class Coin {
-    public static final String HEADS = "Heads";
-    public static final String TAILS = "Tails";
 
-    public double chanceOfTails(int noOfTimes) {
+    public double chanceOfTails(int timesToFlip) {
         double tailCount = 0;
-        for (int flipCounter = 0; flipCounter < noOfTimes; flipCounter++) {
-            if(this.flip().equals(TAILS)) {
+        for (int flipCounter = 0; flipCounter < timesToFlip; flipCounter++) {
+            if (this.flip().equals(CoinFace.TAILS)) {
                 tailCount++;
             }
         }
-        return tailCount;
+        return (tailCount / timesToFlip) * 100;
     }
 
-    public String flip() {
-        return Math.random() < 0.5 ? TAILS : HEADS;
+    public CoinFace flip() {
+        return Math.random() < 0.5 ? CoinFace.TAILS : CoinFace.HEADS;
+    }
+
+    public double chanceOfNotGettingTails(int timesToFlip) {
+        return 100 - this.chanceOfTails(timesToFlip);
     }
 }
 
