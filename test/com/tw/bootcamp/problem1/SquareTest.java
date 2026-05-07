@@ -1,5 +1,6 @@
 package com.tw.bootcamp.problem1;
 
+import com.tw.bootcamp.problem1.domain.Square;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
