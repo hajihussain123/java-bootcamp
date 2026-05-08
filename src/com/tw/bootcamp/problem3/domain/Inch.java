@@ -1,14 +1,15 @@
 package com.tw.bootcamp.problem3.domain;
 
-public class Inch{
+public class Inch implements Unit{
     private final double length;
 
     public Inch(double length) {
         this.length = length;
     }
 
-    public Feet convertToFeet() {
-        return  new Feet(this.length / 12);
+    @Override
+    public Inch convertToBase() {
+        return  this;
     }
 
     @Override

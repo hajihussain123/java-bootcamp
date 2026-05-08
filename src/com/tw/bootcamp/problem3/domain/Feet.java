@@ -1,8 +1,6 @@
 package com.tw.bootcamp.problem3.domain;
 
-import java.util.Objects;
-
-public class Feet{
+public class Feet implements Unit{
     private final double length;
 
     public Feet(double length) {
@@ -15,7 +13,8 @@ public class Feet{
         return Double.compare(length, feet.length) == 0;
     }
 
-    public Inch convertToInch() {
+    @Override
+    public Inch convertToBase() {
         return  new Inch(this.length * 12);
     }
 }

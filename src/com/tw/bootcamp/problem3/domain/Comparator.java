@@ -2,11 +2,7 @@ package com.tw.bootcamp.problem3.domain;
 
 public class Comparator {
 
-    public boolean isEquals(Inch length1, Feet length2) {
-        return length1.equals(length2.convertToInch());
-    }
-
-    public boolean isEquals(Feet length1, Inch length2) {
-        return length1.equals(length2.convertToFeet());
+    public <T1 extends Unit,T2 extends Unit> boolean isEquals(T1 length1, T2 length2) {
+        return length1.convertToBase().equals(length2.convertToBase());
     }
 }
