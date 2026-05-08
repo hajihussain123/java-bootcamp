@@ -26,4 +26,11 @@ class VolumeTest {
         assertNotEquals(oneGallon, threePointSevenEightLitre);
     }
 
+    @Test
+    void shouldReturn4Point78LitresforAdding1LitreAnd1Gallon() {
+        Volume oneGallon = new Volume(1, VolumeUnit.GALLON);
+        Volume oneLitre = new Volume(1, VolumeUnit.LITRE);
+        assertEquals(new Volume(4.78, VolumeUnit.LITRE), oneGallon.add(oneLitre));
+    }
+
 }

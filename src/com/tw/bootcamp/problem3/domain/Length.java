@@ -17,7 +17,7 @@ public class Length {
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Length length1)) return false;
-        return Double.compare(convertValueToInch(), length1.convertValueToInch()) == 0;
+        return Math.abs(convertValueToInch() - length1.convertValueToInch()) <= 0.1;
     }
 
     private double convertValueToInch() {

@@ -9,13 +9,21 @@ public class Volume {
         this.volumeUnit = volumeUnit;
     }
 
-    public static Volume create(double volume,VolumeUnit volumeUnit) {
+    public static Volume create(double volume, VolumeUnit volumeUnit) {
         return new Volume(volume, volumeUnit);
     }
 
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Volume volume1)) return false;
-        return Double.compare(volumeUnit.conversionFactor * volume, volume1.volumeUnit.conversionFactor * volume1.volume) == 0;
+        return Math.abs(convertValueToLitre() - volume1.convertValueToLitre()) <= 0.1;
+    }
+
+    private double convertValueToLitre() {
+        return this.volumeUnit.conversionFactor * this.volume;
+    }
+
+    public Volume add(Volume other) {
+        return new Volume(convertValueToLitre() + other.convertValueToLitre(), VolumeUnit.LITRE);
     }
 }
