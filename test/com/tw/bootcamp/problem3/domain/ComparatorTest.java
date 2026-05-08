@@ -52,4 +52,20 @@ class ComparatorTest {
         Centimeter fiveCm = new Centimeter(6);
         assertFalse(comparator.isEquals(fiveCm,twoInch));
     }
+
+    @Test
+    void ShouldReturnTrueFor1cmAnd10Mm() {
+        Comparator comparator = new Comparator();
+        Milimeter tenMm = new Milimeter(10);
+        Centimeter oneCm = new Centimeter(1);
+        assertTrue(comparator.isEquals(oneCm,tenMm));
+    }
+
+    @Test
+    void ShouldReturnFalseFor3cmAnd10Mm() {
+        Comparator comparator = new Comparator();
+        Milimeter tenMm = new Milimeter(10);
+        Centimeter oneCm = new Centimeter(3);
+        assertFalse(comparator.isEquals(oneCm,tenMm));
+    }
 }
