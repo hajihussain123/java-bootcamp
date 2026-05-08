@@ -10,7 +10,7 @@ class ParkingLotTest {
     void ShouldReturnConfirmationAfterSuccessfulParkingOfCar() {
         ParkingLot parkingLot = new ParkingLot(3);
         Car car = new Car("Black");
-        assertEquals(new Notification("Car parked successfully"),parkingLot.park(car));
+        assertTrue(parkingLot.park(car));
     }
 
     @Test
@@ -18,9 +18,9 @@ class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot(2);
         Car car1 = new Car("Black");
         Car car2 = new Car("Black");
-        assertEquals(new Notification("Car parked successfully"),parkingLot.park(car1));
+        assertTrue(parkingLot.park(car1));
         assertFalse(parkingLot.isFull());
-        assertEquals(new Notification("Car parked successfully"),parkingLot.park(car2));
+        assertTrue(parkingLot.park(car2));
         assertTrue(parkingLot.isFull());
     }
 
@@ -29,7 +29,7 @@ class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot(1);
         Car car1 = new Car("Black");
         Car car2 = new Car("Black");
-        assertEquals(new Notification("Car parked successfully"),parkingLot.park(car1));
-        assertEquals(new Notification("ParkingLot is full"),parkingLot.park(car2));
+        assertTrue(parkingLot.park(car1));
+        assertFalse(parkingLot.park(car2));
     }
 }

@@ -12,14 +12,12 @@ public class ParkingLot {
         this.lot = new ArrayList<>();
     }
 
-    public Notification park(Car car) {
-        if(this.isFull()){
-            return new Notification("ParkingLot is full");
-        }
+    public boolean park(Car car) {
+        if (this.isFull()) return false;
 
         this.lot.add(car);
 
-        return new Notification("Car parked successfully");
+        return true;
     }
 
     public boolean isFull() {
