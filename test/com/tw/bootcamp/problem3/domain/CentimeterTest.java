@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CentimeterTest {
     @Test
     void ShouldReturn2InchFor5Cm() {
-        Centimeter fiveCentimeter = new Centimeter(5);
-        assertEquals(new Inch(2),fiveCentimeter.convertToBase());
+        Centimeter fiveCentimeter = Centimeter.create(5);
+        assertEquals(Inch.create(2),fiveCentimeter.convertToBase());
     }
 }

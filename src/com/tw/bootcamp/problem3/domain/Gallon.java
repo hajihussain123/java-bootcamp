@@ -1,14 +1,21 @@
 package com.tw.bootcamp.problem3.domain;
 
 public class Gallon implements Volume{
-    private final double quantity;
+    private final double volume;
 
-    public Gallon(double quantity) {
-        this.quantity = quantity;
+    private Gallon(double volume) {
+        this.volume = volume;
+    }
+
+    public static Gallon create(double volume) throws InvalidUnitCreationException{
+        if (volume < 0) {
+            throw new InvalidUnitCreationException("Volume can't be negative");
+        }
+        return new Gallon(volume);
     }
 
     @Override
     public Litre convertToBase() {
-        return new Litre(this.quantity * 3.78);
+        return Litre.create(this.volume * 3.78);
     }
 }

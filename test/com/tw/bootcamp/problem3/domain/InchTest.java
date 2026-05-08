@@ -9,14 +9,14 @@ class InchTest {
 
     @Test
     void ShouldReturn12InchFor1Ft() {
-        Inch oneInch = new Inch(1);
-        assertEquals(new Inch(1), oneInch.convertToBase());
+        Inch oneInch = Inch.create(1);
+        assertEquals(Inch.create(1), oneInch.convertToBase());
     }
 
     @Test
     void ShouldReturnFalseForUnequalUnits() {
-        Inch oneInch = new Inch(1);
-        Feet oneFeet = new Feet(1);
+        Inch oneInch = Inch.create(1);
+        Feet oneFeet = Feet.create(1);
         assertNotEquals(oneInch, oneFeet);
     }
 
