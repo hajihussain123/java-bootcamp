@@ -6,9 +6,13 @@ public enum LengthUnit {
     CENTIMETER(0.4),
     MILLIMETER(0.04);
 
-    public final double conversionFactor;
+    private final double conversionFactor;
 
     LengthUnit(double conversionFactor) {
         this.conversionFactor = conversionFactor;
+    }
+
+    public double toStandard(double length) {
+        return length * conversionFactor;
     }
 }

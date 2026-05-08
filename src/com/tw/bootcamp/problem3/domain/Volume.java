@@ -15,15 +15,11 @@ public class Volume {
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof Volume volume1)) return false;
-        return Math.abs(convertValueToLitre() - volume1.convertValueToLitre()) <= 0.1;
-    }
-
-    private double convertValueToLitre() {
-        return this.volumeUnit.conversionFactor * this.volume;
+        if (!(o instanceof Volume that)) return false;
+        return Math.abs(this.volumeUnit.toStandard(this.volume) - that.volumeUnit.toStandard(that.volume)) <= 0.1;
     }
 
     public Volume add(Volume other) {
-        return new Volume(convertValueToLitre() + other.convertValueToLitre(), VolumeUnit.LITRE);
+        return new Volume(this.volumeUnit.toStandard(this.volume) + other.volumeUnit.toStandard(other.volume), VolumeUnit.LITRE);
     }
 }

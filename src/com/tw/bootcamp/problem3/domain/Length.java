@@ -16,15 +16,11 @@ public class Length {
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof Length length1)) return false;
-        return Math.abs(convertValueToInch() - length1.convertValueToInch()) <= 0.1;
-    }
-
-    private double convertValueToInch() {
-        return this.lengthUnit.conversionFactor * this.length;
+        if (!(o instanceof Length that)) return false;
+        return Math.abs(this.lengthUnit.toStandard(this.length) - that.lengthUnit.toStandard(that.length)) <= 0.1;
     }
 
     public Length add(Length other) {
-        return new Length(convertValueToInch() + other.convertValueToInch(), LengthUnit.INCH);
+        return new Length(this.lengthUnit.toStandard(this.length) + other.lengthUnit.toStandard(other.length), LengthUnit.INCH);
     }
 }
