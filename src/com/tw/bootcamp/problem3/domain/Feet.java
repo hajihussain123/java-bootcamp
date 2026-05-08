@@ -8,12 +8,6 @@ public class Feet implements Unit{
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof Feet feet)) return false;
-        return Double.compare(length, feet.length) == 0;
-    }
-
-    @Override
     public Inch convertToBase() {
         return  new Inch(this.length * 12);
     }
