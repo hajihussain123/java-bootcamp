@@ -1,6 +1,6 @@
 package com.tw.bootcamp.problem3.domain;
 
-public class Inch implements Unit{
+public class Inch implements Length {
     private final double length;
 
     public Inch(double length) {

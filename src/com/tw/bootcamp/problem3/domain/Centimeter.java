@@ -1,6 +1,6 @@
 package com.tw.bootcamp.problem3.domain;
 
-public class Centimeter implements Unit {
+public class Centimeter implements Length {
     private final double length;
 
     public Centimeter(double length) {

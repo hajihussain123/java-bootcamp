@@ -1,6 +1,6 @@
 package com.tw.bootcamp.problem3.domain;
 
-public class Feet implements Unit{
+public class Feet implements Length {
     private final double length;
 
     public Feet(double length) {

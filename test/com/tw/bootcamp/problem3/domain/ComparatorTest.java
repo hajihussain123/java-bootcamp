@@ -10,7 +10,7 @@ class ComparatorTest {
         Comparator comparator = new Comparator();
         Inch twelveInch = new Inch(12);
         Feet oneFeet = new Feet(1);
-        assertTrue(comparator.isEquals(twelveInch,oneFeet));
+        assertTrue(comparator.compareLengths(twelveInch,oneFeet));
     }
 
     @Test
@@ -18,7 +18,7 @@ class ComparatorTest {
         Comparator comparator = new Comparator();
         Inch twelveInch = new Inch(12);
         Feet oneFeet = new Feet(1);
-        assertTrue(comparator.isEquals(oneFeet,twelveInch));
+        assertTrue(comparator.compareLengths(oneFeet,twelveInch));
     }
 
     @Test
@@ -26,7 +26,7 @@ class ComparatorTest {
         Comparator comparator = new Comparator();
         Inch twelveInch = new Inch(12);
         Feet twoFeet = new Feet(2);
-        assertFalse(comparator.isEquals(twoFeet,twelveInch));
+        assertFalse(comparator.compareLengths(twoFeet,twelveInch));
     }
 
     @Test
@@ -34,7 +34,7 @@ class ComparatorTest {
         Comparator comparator = new Comparator();
         Inch twoInch = new Inch(2);
         Centimeter fiveCm = new Centimeter(5);
-        assertTrue(comparator.isEquals(fiveCm,twoInch));
+        assertTrue(comparator.compareLengths(fiveCm,twoInch));
     }
 
     @Test
@@ -42,7 +42,7 @@ class ComparatorTest {
         Comparator comparator = new Comparator();
         Inch twoInch = new Inch(2);
         Centimeter fiveCm = new Centimeter(5);
-        assertTrue(comparator.isEquals(twoInch,fiveCm));
+        assertTrue(comparator.compareLengths(twoInch,fiveCm));
     }
 
     @Test
@@ -50,7 +50,7 @@ class ComparatorTest {
         Comparator comparator = new Comparator();
         Inch twoInch = new Inch(2);
         Centimeter fiveCm = new Centimeter(6);
-        assertFalse(comparator.isEquals(fiveCm,twoInch));
+        assertFalse(comparator.compareLengths(fiveCm,twoInch));
     }
 
     @Test
@@ -58,7 +58,7 @@ class ComparatorTest {
         Comparator comparator = new Comparator();
         Milimeter tenMm = new Milimeter(10);
         Centimeter oneCm = new Centimeter(1);
-        assertTrue(comparator.isEquals(oneCm,tenMm));
+        assertTrue(comparator.compareLengths(oneCm,tenMm));
     }
 
     @Test
@@ -66,6 +66,30 @@ class ComparatorTest {
         Comparator comparator = new Comparator();
         Milimeter tenMm = new Milimeter(10);
         Centimeter oneCm = new Centimeter(3);
-        assertFalse(comparator.isEquals(oneCm,tenMm));
+        assertFalse(comparator.compareLengths(oneCm,tenMm));
+    }
+
+    @Test
+    void ShouldReturnTrueFor1GallonAnd3Point78Litres() {
+        Comparator comparator = new Comparator();
+        Gallon oneGallon = new Gallon(1);
+        Litre threePointSevenEightLitre = new Litre(3.78);
+        assertTrue(comparator.compareVolumes(oneGallon,threePointSevenEightLitre));
+    }
+
+    @Test
+    void ShouldReturnTrueFor2GallonAnd7Point56Litres() {
+        Comparator comparator = new Comparator();
+        Gallon twoGallon = new Gallon(2);
+        Litre sevenPointFiveSixLitre = new Litre(7.56);
+        assertTrue(comparator.compareVolumes(sevenPointFiveSixLitre,twoGallon));
+    }
+
+    @Test
+    void ShouldReturnFalseFor1GallonAnd2Point78Litres() {
+        Comparator comparator = new Comparator();
+        Gallon oneGallon = new Gallon(1);
+        Litre threePointSevenEightLitre = new Litre(2.78);
+        assertFalse(comparator.compareVolumes(oneGallon,threePointSevenEightLitre));
     }
 }
