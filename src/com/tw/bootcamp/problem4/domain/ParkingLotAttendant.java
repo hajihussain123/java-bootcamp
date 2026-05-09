@@ -11,9 +11,7 @@ public class ParkingLotAttendant {
 
     public boolean park(Car car) {
         for (ParkingLot parkingLot : parkingLots) {
-            if (!parkingLot.isFull()) {
-                return parkingLot.park(car);
-            }
+            if (!parkingLot.isFull()) return parkingLot.park(car);
         }
 
         return false;

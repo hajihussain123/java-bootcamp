@@ -13,7 +13,7 @@ public class ParkingLot {
     }
 
     public static ParkingLot create(int totalSlots) throws InvalidSlotsInParkingLotCreationException {
-        if(totalSlots < 1) {
+        if (totalSlots < 1) {
             throw new InvalidSlotsInParkingLotCreationException("Can't create parkinglot with no slots");
         }
         return new ParkingLot(totalSlots);
