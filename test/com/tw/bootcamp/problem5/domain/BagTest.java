@@ -31,4 +31,13 @@ class BagTest {
         bag.add(new Ball(Color.GREEN));
         assertFalse(bag.add(new Ball(Color.GREEN)));
     }
+
+    @Test
+    void shouldNotAddRedBallIfGreenBallIsLessThanOrEqualToItsHalfInTheBag() {
+        Bag bag = new Bag();
+        bag.add(new Ball(Color.GREEN));
+        bag.add(new Ball(Color.RED));
+        bag.add(new Ball(Color.RED));
+        assertFalse(bag.add(new Ball(Color.RED)));
+    }
 }
