@@ -2,8 +2,7 @@ package com.tw.bootcamp.problem5.domain;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class BagTest {
     @Test
@@ -50,5 +49,16 @@ class BagTest {
         bag.add(new Ball(Color.YELLOW));
         bag.add(new Ball(Color.YELLOW));
         assertFalse(bag.add(new Ball(Color.YELLOW)));
+    }
+
+    @Test
+    void shouldDisplaySummaryOfTheBag() {
+        Bag bag = new Bag();
+        bag.add(new Ball(Color.GREEN));
+        bag.add(new Ball(Color.RED));
+        bag.add(new Ball(Color.RED));
+        bag.add(new Ball(Color.YELLOW));
+        bag.add(new Ball(Color.YELLOW));
+        assertEquals("Summary:\n\nBlue   : 0\nGreen  : 1\nRed    : 2\nYellow : 2\n\nTotal : 5", bag.getSummary());
     }
 }

@@ -43,12 +43,25 @@ public class Bag {
         return pockets.get(color);
     }
 
-    @Override
-    public String toString() {
-        return "Bag{" +
-                "pockets=" + pockets +
-                ", totalSlots=" + totalSlots +
-                ", occupiedSlots=" + occupiedSlots +
-                '}';
+    public String getSummary() {
+        return "Summary:\n\n" +
+                this.getPocketsSummary() +
+                "\n\nTotal : " + occupiedSlots;
+    }
+
+    private String getPocketsSummary() {
+        ArrayList<Ball> bluePocket = getPocket(Color.BLUE);
+        ArrayList<Ball> redPocket = getPocket(Color.RED);
+        ArrayList<Ball> greenPocket = getPocket(Color.GREEN);
+        ArrayList<Ball> yellowPocket = getPocket(Color.YELLOW);
+
+        StringBuilder pocketSummary = new StringBuilder();
+
+        pocketSummary.append("Blue   : ").append(bluePocket.size());
+        pocketSummary.append("\nGreen  : ").append(greenPocket.size());
+        pocketSummary.append("\nRed    : ").append(redPocket.size());
+        pocketSummary.append("\nYellow : ").append(yellowPocket.size());
+
+        return pocketSummary.toString();
     }
 }
