@@ -1,7 +1,5 @@
 package com.tw.bootcamp.problem3.domain;
 
-import java.util.Objects;
-
 public class Temperature {
 
     private final double temperature;

@@ -7,14 +7,19 @@ public class ParkingLot {
     private final ArrayList<Car> lot;
     private final int totalSlots;
 
-    public ParkingLot(int totalSlots) {
+    private ParkingLot(int totalSlots) {
         this.totalSlots = totalSlots;
         this.lot = new ArrayList<>();
     }
 
-    public boolean park(Car car) {
-        if (this.isFull()) return false;
+    public static ParkingLot create(int totalSlots) throws InvalidSlotsInParkingLotCreationException {
+        if(totalSlots < 1) {
+            throw new InvalidSlotsInParkingLotCreationException("Can't create parkinglot with no slots");
+        }
+        return new ParkingLot(totalSlots);
+    }
 
+    public boolean park(Car car) {
         this.lot.add(car);
 
         return true;
@@ -24,4 +29,3 @@ public class ParkingLot {
         return lot.size() == totalSlots;
     }
 }
-
