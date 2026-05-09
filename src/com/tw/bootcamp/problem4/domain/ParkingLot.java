@@ -28,4 +28,17 @@ public class ParkingLot {
     public boolean isFull() {
         return lot.size() == totalSlots;
     }
+
+    @Override
+    public String toString() {
+        return "ParkingLot{" +
+                ", totalSlots=" + totalSlots +
+                ", availableSlots=" + (totalSlots - lot.size()) +
+                ", occupiedSlots=" + lot.size() +
+                '}';
+    }
+
+    public boolean is80PercentFull() {
+        return (((double) lot.size() / totalSlots) * 100) >= 80.0;
+    }
 }
