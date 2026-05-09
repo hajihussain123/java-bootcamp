@@ -5,7 +5,8 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ParkingLotAttendantTest {
 
@@ -19,10 +20,12 @@ class ParkingLotAttendantTest {
         parkingLots.add(parkingLot1);
         parkingLots.add(parkingLot2);
 
-        ParkingLotAttendant parkingLotAttendant = new ParkingLotAttendant(parkingLots);
+        ParkingLotAssistant parkingLotAssistant = new ParkingLotAssistant();
+
+        ParkingLotAttendant parkingLotAttendant = new ParkingLotAttendant(parkingLots, parkingLotAssistant);
 
         Car car = new Car("Black");
-        
+
         assertTrue(parkingLotAttendant.park(car));
     }
 
@@ -35,7 +38,9 @@ class ParkingLotAttendantTest {
         parkingLots.add(parkingLot1);
         parkingLots.add(parkingLot2);
 
-        ParkingLotAttendant parkingLotAttendant = new ParkingLotAttendant(parkingLots);
+        ParkingLotAssistant parkingLotAssistant = new ParkingLotAssistant();
+
+        ParkingLotAttendant parkingLotAttendant = new ParkingLotAttendant(parkingLots, parkingLotAssistant);
 
         Car car1 = new Car("Black");
         Car car2 = new Car("Black");
