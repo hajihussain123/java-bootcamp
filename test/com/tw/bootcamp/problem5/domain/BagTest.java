@@ -40,4 +40,15 @@ class BagTest {
         bag.add(new Ball(Color.RED));
         assertFalse(bag.add(new Ball(Color.RED)));
     }
+
+    @Test
+    void shouldNotAddTheYellowBallIfYellowBallsAreMoreThanEqualTo40PercentOfTotal() {
+        Bag bag = new Bag();
+        bag.add(new Ball(Color.GREEN));
+        bag.add(new Ball(Color.RED));
+        bag.add(new Ball(Color.RED));
+        bag.add(new Ball(Color.YELLOW));
+        bag.add(new Ball(Color.YELLOW));
+        assertFalse(bag.add(new Ball(Color.YELLOW)));
+    }
 }

@@ -17,16 +17,24 @@ public class Bag {
 
     public boolean add(Ball ball) {
         if (this.occupiedSlots == totalSlots) return false;
-        Color color = ball.getColor();
 
+        Color color = ball.getColor();
         ArrayList<Ball> pocket = getPocket(color);
-        if (color == Color.GREEN && pocket.size() == 3) return false;
-        if (color == Color.RED && getPocket(Color.GREEN).size() * 2 <= pocket.size()) return false;
+        if (canAddBall(color, pocket)) return false;
 
         pocket.add(ball);
         this.occupiedSlots++;
 
         return true;
+    }
+
+    private boolean canAddBall(Color color, ArrayList<Ball> pocket) {
+        return switch (color) {
+            case GREEN -> pocket.size() == 3;
+            case YELLOW -> ((double) pocket.size() / occupiedSlots) * 100 >= 40.0;
+            case RED -> getPocket(Color.GREEN).size() * 2 <= pocket.size();
+            default -> false;
+        };
     }
 
     private ArrayList<Ball> getPocket(Color color) {
