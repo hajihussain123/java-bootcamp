@@ -2,13 +2,14 @@ package com.tw.bootcamp.problem5.domain;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BagTest {
     @Test
     void shouldAddBall() {
         Bag bag = new Bag();
-        Ball ball = new Ball();
+        Ball ball = new Ball(Color.BLUE);
         assertTrue(bag.add(ball));
     }
 
@@ -16,9 +17,9 @@ class BagTest {
     void shouldNotAddTheBallIfThereIsNoSpace() {
         Bag bag = new Bag();
         for (int ballCount = 0; ballCount < 12; ballCount++) {
-            Ball ball = new Ball();
+            Ball ball = new Ball(Color.BLUE);
             assertTrue(bag.add(ball));
         }
-        assertFalse(bag.add(new Ball()));
+        assertFalse(bag.add(new Ball(Color.GREEN)));
     }
 }
