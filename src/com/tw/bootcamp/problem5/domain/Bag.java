@@ -3,7 +3,6 @@ package com.tw.bootcamp.problem5.domain;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class Bag {
     private final Map<Color, ArrayList<Ball>> pockets;
@@ -17,15 +16,15 @@ public class Bag {
     }
 
     public boolean add(Ball ball) {
-        if(this.occupiedSlots == totalSlots) return false;
+        if (this.occupiedSlots == totalSlots) return false;
 
         Color color = ball.getColor();
 
-        if(!pockets.containsKey(color)) {
-            pockets.put(color, new ArrayList<>());
-        }
+        if (!pockets.containsKey(color)) pockets.put(color, new ArrayList<>());
 
         ArrayList<Ball> pocket = pockets.get(color);
+        if (color == Color.GREEN && pocket.size() == 3) return false;
+
         pocket.add(ball);
 
         this.occupiedSlots++;

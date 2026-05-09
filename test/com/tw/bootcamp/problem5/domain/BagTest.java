@@ -22,4 +22,13 @@ class BagTest {
         }
         assertFalse(bag.add(new Ball(Color.GREEN)));
     }
+
+    @Test
+    void shouldNotAddTheGreenBallIfThereAreAlreadyThreeGreenBalls() {
+        Bag bag = new Bag();
+        bag.add(new Ball(Color.GREEN));
+        bag.add(new Ball(Color.GREEN));
+        bag.add(new Ball(Color.GREEN));
+        assertFalse(bag.add(new Ball(Color.GREEN)));
+    }
 }
