@@ -2,6 +2,8 @@ package com.tw.bootcamp.problem5.domain;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class BagTest {
@@ -60,5 +62,16 @@ class BagTest {
         bag.add(new Ball(Color.YELLOW));
         bag.add(new Ball(Color.YELLOW));
         assertEquals("Summary:\n\nBlue   : 0\nGreen  : 1\nRed    : 2\nYellow : 2\n\nTotal : 5", bag.getSummary());
+    }
+
+    @Test
+    void shouldCheckOnlyGreenBallRule() {
+        ArrayList<Rule> ruleBook = new ArrayList<>();
+        ruleBook.add((pockets, ball) -> {
+            if(ball.getColor() != Color.GREEN) return true;
+            ArrayList<Ball> pocket = pockets.get(Color.GREEN);
+            return pocket.size() == 3;
+        });
+        Bag bag = new Bag(ruleBook);
     }
 }

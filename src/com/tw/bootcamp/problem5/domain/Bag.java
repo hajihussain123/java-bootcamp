@@ -7,12 +7,21 @@ import java.util.Map;
 public class Bag {
     private final Map<Color, ArrayList<Ball>> pockets;
     private final int totalSlots;
+    private final ArrayList<Rule> ruleBook;
     private int occupiedSlots;
+
+    public Bag(ArrayList<Rule> ruleBook) {
+        this.ruleBook = ruleBook;
+        this.pockets = new HashMap<>();
+        this.totalSlots = 12;
+        this.occupiedSlots = 0;
+    }
 
     public Bag() {
         this.pockets = new HashMap<>();
         this.totalSlots = 12;
         this.occupiedSlots = 0;
+        ruleBook = new ArrayList<>();
     }
 
     public boolean add(Ball ball) {
@@ -20,7 +29,7 @@ public class Bag {
 
         Color color = ball.getColor();
         ArrayList<Ball> pocket = getPocket(color);
-        if (canAddBall(color, pocket)) return false;
+        if (!canAddBall(color, pocket)) return false;
 
         pocket.add(ball);
         this.occupiedSlots++;
@@ -30,10 +39,10 @@ public class Bag {
 
     private boolean canAddBall(Color color, ArrayList<Ball> pocket) {
         return switch (color) {
-            case GREEN -> pocket.size() == 3;
-            case YELLOW -> ((double) pocket.size() / occupiedSlots) * 100 >= 40.0;
-            case RED -> getPocket(Color.GREEN).size() * 2 <= pocket.size();
-            default -> false;
+            case GREEN -> pocket.size() < 3;
+            case YELLOW -> ((double) pocket.size() / occupiedSlots) * 100 < 40.0;
+            case RED -> getPocket(Color.GREEN).size() * 2 > pocket.size();
+            case BLUE -> true;
         };
     }
 
@@ -55,13 +64,9 @@ public class Bag {
         ArrayList<Ball> greenPocket = getPocket(Color.GREEN);
         ArrayList<Ball> yellowPocket = getPocket(Color.YELLOW);
 
-        StringBuilder pocketSummary = new StringBuilder();
-
-        pocketSummary.append("Blue   : ").append(bluePocket.size());
-        pocketSummary.append("\nGreen  : ").append(greenPocket.size());
-        pocketSummary.append("\nRed    : ").append(redPocket.size());
-        pocketSummary.append("\nYellow : ").append(yellowPocket.size());
-
-        return pocketSummary.toString();
+        return "Blue   : " + bluePocket.size() +
+                "\nGreen  : " + greenPocket.size() +
+                "\nRed    : " + redPocket.size() +
+                "\nYellow : " + yellowPocket.size();
     }
 }
